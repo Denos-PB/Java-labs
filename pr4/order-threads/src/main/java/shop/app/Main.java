@@ -18,7 +18,6 @@ public class Main {
         OrderRepository<Electronics> electronicsRepository = new OrderRepository<>();
         OrderRepository<Clothing> clothingRepository = new OrderRepository<>();
 
-        // Посилання на методи збереження передаємо обробникам.
         OrderProcessor<Electronics> electronicsProcessor =
                 new OrderProcessor<>(electronicsRepository::save);
         OrderProcessor<Clothing> clothingProcessor =
@@ -33,7 +32,6 @@ public class Main {
                     .build();
             Order<Electronics> order = new Order<>(
                     "E-" + i, product, faker.number().numberBetween(1, 4));
-            // Лямбда виконається у робочому потоці.
             tasks.add(() -> electronicsProcessor.process(order));
         }
         for (int i = 1; i <= 5; i++) {

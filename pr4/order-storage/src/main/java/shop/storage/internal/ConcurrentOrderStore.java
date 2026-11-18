@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-// Пакет internal не експортується іншим Java-модулям.
 public final class ConcurrentOrderStore<T extends Product> {
     private final ConcurrentMap<String, Order<T>> orders = new ConcurrentHashMap<>();
 
